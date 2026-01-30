@@ -1,0 +1,21 @@
+<div class="auth-container">
+    <form action="/create" method="POST">
+        <fieldset>
+            <legend>Adicionar Noticia</legend>
+    
+            <label for="titulo">Insira o título:</label>
+            <input type="text" name="titulo" id="titulo" placeholder="Minha nova notícia" required>
+            
+            <label for="conteudo">Digite sua notícia:</label>
+            <textarea name="conteudo" id="conteudo" placeholder="Escreva o conteúdo aqui..."></textarea>
+            
+            <label for="image">URL da imagem:</label>
+            <input type="text" name="image" id="image" placeholder="http://...">
+    
+            <label for="autor">Autora:</label>
+            <input type="text" name="autor" id="autor">
+            
+            <input type="submit" value="Enviar Notícia">
+        </fieldset>
+    </form>
+</div>

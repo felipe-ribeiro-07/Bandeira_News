@@ -1,0 +1,34 @@
+{
+  "name": "bandeira_news",
+  "version": "1.0.0",
+  "description": "bandeira news aplication npm",
+  "homepage": "https://github.com/felipe-ribeiro-07/Bandeira_News#readme",
+  "bugs": {
+    "url": "https://github.com/felipe-ribeiro-07/Bandeira_News/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipe-ribeiro-07/Bandeira_News.git"
+  },
+  "license": "ISC",
+  "author": "felipe",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-session": "^2.1.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-flash": "^0.0.2",
+    "express-handlebars": "^8.0.4",
+    "pg": "^8.17.2",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

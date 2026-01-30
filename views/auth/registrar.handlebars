@@ -1,0 +1,23 @@
+<section class="auth-container">
+    <form action="/registrar" method="POST">
+        <fieldset>
+            <legend>Crie sua conta</legend>
+        </fieldset>
+
+        <label for="name">Nome:</label>
+        <input type="text" name="name" placeholder="Seu nome completo" required>
+        
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" placeholder="email@exemplo.com" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" name="senha" placeholder="Crie uma senha" required>
+        
+        <label for="confirmSenha">Confirmação de senha:</label>
+        <input type="password" name="confirmSenha" placeholder="Repita a senha" required>
+
+        <input type="submit" value="Cadastrar">
+
+        <a href="/login" class="auth-link">Já tenho uma conta</a>
+    </form>
+</section>

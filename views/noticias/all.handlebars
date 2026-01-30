@@ -1,0 +1,101 @@
+<!-- HERO / PORTFÓLIO -->
+<section class="bc">
+    <div class="container portfolio-container">
+
+        <div class="row align-items-center mb-5 gx-lg-5">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+                <div class="profile-image-wrapper">
+                    <img src="/image/gabriela.jpeg" alt="Nome da Jornalista" class="profile-img">
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <span class="card-category">Jornalista</span>
+
+                <h1 class="display-4 fw-bold mt-2">
+                    Gabriela Bandeira <span class="highlight">.</span>
+                </h1>
+
+                <p class="lead text-white">
+                        Estudante de Jornalismo na UNISO e estagiária no GE (Globo). Experiência em cobertura esportiva pela RWE360, com destaque para a Taça das Favelas e eventos ao vivo. Focado em apuração rigorosa e narrativa factual.
+                <div class="d-flex gap-3 mt-4 flex-wrap">
+                    <a href="#contato" class="btn btn-success px-4 py-2">Entrar em contato</a>
+                    <a href="#" class="btn btn-outline-light px-4 py-2">Baixar CV</a>
+                </div>
+            </div>
+        </div>
+
+        {{!-- <div class="row g-4">
+            <div class="col-lg-7">
+                <h3 class="mb-4">Sobre mim</h3>
+
+                <div class="article-content">
+                    <p class="text-white">
+                        Formada em Comunicação Social, dedico minha carreira a contar histórias que impactam a sociedade.
+                        Minha trajetória no <strong>Bandeira News</strong> foca na transparência e na busca pela verdade.
+                    </p>
+                    <p class="text-white">
+                        Já colaborei com grandes veículos nacionais e internacionais, cobrindo eventos que moldaram
+                        o cenário político atual.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="skills-card p-4">
+                    <h4 class="mb-3">Especialidades</h4>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><span class="highlight">●</span> Reportagem Investigativa</li>
+                        <li class="mb-2"><span class="highlight">●</span> Redação Editorial</li>
+                        <li class="mb-2"><span class="highlight">●</span> Gestão de Crise e Comunicação</li>
+                        <li><span class="highlight">●</span> Análise de Dados Públicos</li>
+                    </ul>
+                </div>
+            </div>
+        </div> --}}
+
+    </div>
+</section>
+
+
+<!-- NOTÍCIAS -->
+<section class="news-section mt-5 mb-3">
+    <div class="container">
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <h2 class="noticia">Notícias</h2>
+                <hr class="w-25">
+            </div>
+        </div>
+
+        <div class="row g-3 gx-lg-4 justify-content-center">
+            {{#each noticia}}
+            <div class="col-12 col-xl-6">
+                <article class="product">
+
+                    <div class="product-image-wrapper">
+                        <img src="https://placehold.co/400x400"
+                             alt="{{this.titulo}}"
+                             class="imageSingle">
+                    </div>
+
+                    <div class="contentLeft">
+                        <h2 class="fs-4 mb-1">{{this.titulo}}</h2>
+
+                        <p class="text-truncate-3 small text-muted mb-2">
+                            {{this.conteudo}}
+                        </p>
+
+                        <a href="/noticia/{{this.id}}" class="btn btn-success btn-sm px-4">
+                            Ler mais
+                        </a>
+                    </div>
+
+                </article>
+            </div>
+            {{/each}}
+        </div>
+
+    </div>
+</section>
