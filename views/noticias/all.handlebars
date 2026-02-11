@@ -38,12 +38,14 @@
                 </p>
 
                 <div class="d-flex gap-3 mt-4 flex-wrap">
-                    <a href="#contato" class="btn btn-success px-4 py-2">
-                        Entrar em contato
-                    </a>
-                    <a href="#" class="btn btn-outline-light px-4 py-2">
-                        Baixar CV
-                    </a>
+                <div class="d-flex flex-column align-items-center gap-2">
+    <a href="mailto:gabrielabandeirass1914@gmail.com" class="btn btn-success px-4 py-2">
+        gabrielabandeirass1914@gmail.com
+
+    </a>
+    
+</div>
+             
                 </div>
             </div>
 
@@ -52,51 +54,41 @@
 </section>
 
 <!-- NOTÍCIAS -->
-<section class="news-section mt-5 mb-3">
+<section class="news-section mt-5 mb-5">
     <div class="container">
 
-        <div class="row mb-3">
+        <div class="row mb-4">
             <div class="col-12">
-                <h2 class="noticia" data-aos="fade-up">Notícias</h2>
-                <hr class="w-25" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="noticia" data-aos="fade-up">Trabalhos em vídeo</h2>
+                <hr class="w-25 ms-0" style="border-color: var(--primary-green); opacity: 1;" data-aos="fade-up" data-aos-delay="100">
             </div>
         </div>
 
-        <div class="row g-3 gx-lg-4 justify-content-center">
-            {{#each noticia}}
-            <div class="col-12 col-xl-6">
-                <article class="product"
-                         data-aos="fade-up"
-                         data-aos-delay="{{@index}}100">
-
-                    <div class="product-image-wrapper">
-                        <img 
-                            src="https://placehold.co/400x400"
-                            alt="{{this.titulo}}"
-                            class="imageSingle"
-                        >
-                    </div>
-
-                    <div class="contentLeft">
-                        <h2 class="fs-4 mb-1">{{this.titulo}}</h2>
-
-                        <p class="text-truncate-3 small text-muted mb-2">
-                            {{this.conteudo}}
-                        </p>
-
-                        <a 
-                            href="/noticia/{{this.id}}" 
-                            class="btn btn-success btn-sm px-4"
-                        >
-                            Ler mais
-                        </a>
-                    </div>
-
-                </article>
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-12 col-md-6" data-aos="zoom-in">
+                <div class="video-wrapper shadow-sm">
+                    <iframe src="https://www.youtube.com/embed/4aNxY2hAtP4?si=83IMJxaJGF3mgoNM&amp;start=3" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen></iframe>
+                </div>
             </div>
-            {{/each}}
-        </div>
 
+            <div class="col-12 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="video-wrapper shadow-sm">
+                    <iframe src="https://www.youtube.com/embed/ds3BPaaovAs?si=0Q4iIaW3xfySx6Iw&amp;start=4" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
