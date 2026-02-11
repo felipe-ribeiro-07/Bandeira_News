@@ -5,7 +5,7 @@ const NoticiaGe = require("../controllers/NoticiaGeController")
 const {checkAuth} = require("../helpers/auth")
 const {checkAdmin} = require("../helpers/admin")
 
-router.get("/" , checkAuth , Noticia.showAll)
+router.get("/" , Noticia.showAll)
 router.get("/create" , checkAuth , Noticia.createNews)
 router.post("/create" , checkAuth , Noticia.createPost)
 router.get("/createGe" ,  checkAuth ,NoticiaGe.createNews)
