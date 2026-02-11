@@ -19,10 +19,10 @@ const Noticia = sequelize.define(
       allowNull: false,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     link:{
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     }
   },
   {

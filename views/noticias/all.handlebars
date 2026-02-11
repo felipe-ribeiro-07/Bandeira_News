@@ -1,15 +1,29 @@
 <!-- HERO / PORTFÓLIO -->
-<section class="bc">
-    <div class="container portfolio-container">
+<section class="bc position-relative">
 
+    <!-- PARTICLES (FUNDO) -->
+    <div id="particles-js"></div>
+
+    <!-- CONTEÚDO -->
+    <div class="container portfolio-container">
         <div class="row align-items-center mb-5 gx-lg-5">
-            <div class="col-md-4 text-center mb-4 mb-md-0">
+
+            <!-- FOTO -->
+            <div class="col-md-4 text-center mb-4 mb-md-0"
+                 data-aos="fade-right">
                 <div class="profile-image-wrapper">
-                    <img src="/image/gabriela.jpeg" alt="Nome da Jornalista" class="profile-img">
+                    <img 
+                        src="/image/gabriela.jpeg" 
+                        alt="Gabriela Bandeira" 
+                        class="profile-img"
+                    >
                 </div>
             </div>
 
-            <div class="col-md-8">
+            <!-- TEXTO -->
+            <div class="col-md-8 ps-lg-5"
+                 data-aos="fade-left"
+                 data-aos-delay="150">
                 <span class="card-category">Jornalista</span>
 
                 <h1 class="display-4 fw-bold mt-2">
@@ -17,46 +31,25 @@
                 </h1>
 
                 <p class="lead text-white">
-                        Estudante de Jornalismo na UNISO e estagiária no GE (Globo). Experiência em cobertura esportiva pela RWE360, com destaque para a Taça das Favelas e eventos ao vivo. Focado em apuração rigorosa e narrativa factual.
+                    Estudante de Jornalismo na UNISO e estagiária no GE (Globo).
+                    Experiência em cobertura esportiva pela RWE360, com destaque
+                    para a Taça das Favelas e eventos ao vivo. Foco em apuração
+                    rigorosa e narrativa factual.
+                </p>
+
                 <div class="d-flex gap-3 mt-4 flex-wrap">
-                    <a href="#contato" class="btn btn-success px-4 py-2">Entrar em contato</a>
-                    <a href="#" class="btn btn-outline-light px-4 py-2">Baixar CV</a>
+                    <a href="#contato" class="btn btn-success px-4 py-2">
+                        Entrar em contato
+                    </a>
+                    <a href="#" class="btn btn-outline-light px-4 py-2">
+                        Baixar CV
+                    </a>
                 </div>
             </div>
+
         </div>
-
-        {{!-- <div class="row g-4">
-            <div class="col-lg-7">
-                <h3 class="mb-4">Sobre mim</h3>
-
-                <div class="article-content">
-                    <p class="text-white">
-                        Formada em Comunicação Social, dedico minha carreira a contar histórias que impactam a sociedade.
-                        Minha trajetória no <strong>Bandeira News</strong> foca na transparência e na busca pela verdade.
-                    </p>
-                    <p class="text-white">
-                        Já colaborei com grandes veículos nacionais e internacionais, cobrindo eventos que moldaram
-                        o cenário político atual.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-lg-5">
-                <div class="skills-card p-4">
-                    <h4 class="mb-3">Especialidades</h4>
-                    <ul class="list-unstyled mb-0">
-                        <li class="mb-2"><span class="highlight">●</span> Reportagem Investigativa</li>
-                        <li class="mb-2"><span class="highlight">●</span> Redação Editorial</li>
-                        <li class="mb-2"><span class="highlight">●</span> Gestão de Crise e Comunicação</li>
-                        <li><span class="highlight">●</span> Análise de Dados Públicos</li>
-                    </ul>
-                </div>
-            </div>
-        </div> --}}
-
     </div>
 </section>
-
 
 <!-- NOTÍCIAS -->
 <section class="news-section mt-5 mb-3">
@@ -64,20 +57,24 @@
 
         <div class="row mb-3">
             <div class="col-12">
-                <h2 class="noticia">Notícias</h2>
-                <hr class="w-25">
+                <h2 class="noticia" data-aos="fade-up">Notícias</h2>
+                <hr class="w-25" data-aos="fade-up" data-aos-delay="100">
             </div>
         </div>
 
         <div class="row g-3 gx-lg-4 justify-content-center">
             {{#each noticia}}
             <div class="col-12 col-xl-6">
-                <article class="product">
+                <article class="product"
+                         data-aos="fade-up"
+                         data-aos-delay="{{@index}}100">
 
                     <div class="product-image-wrapper">
-                        <img src="https://placehold.co/400x400"
-                             alt="{{this.titulo}}"
-                             class="imageSingle">
+                        <img 
+                            src="https://placehold.co/400x400"
+                            alt="{{this.titulo}}"
+                            class="imageSingle"
+                        >
                     </div>
 
                     <div class="contentLeft">
@@ -87,11 +84,124 @@
                             {{this.conteudo}}
                         </p>
 
-                        <a href="/noticia/{{this.id}}" class="btn btn-success btn-sm px-4">
+                        <a 
+                            href="/noticia/{{this.id}}" 
+                            class="btn btn-success btn-sm px-4"
+                        >
                             Ler mais
                         </a>
                     </div>
 
+                </article>
+            </div>
+            {{/each}}
+        </div>
+
+    </div>
+</section>
+
+<!-- TRABALHOS NO GE -->
+<section class="news-section my-5 px-2">
+    <div class="container-fluid container-xl">
+
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="noticia display-5 mt-2"
+                    data-aos="fade-up">
+                    Meu trabalho no Ge.globo
+                </h2>
+                <div 
+                    class="mx-auto border-top border-dark border-3 mt-3"
+                    style="width: 60px;"
+                    data-aos="fade-up"
+                    data-aos-delay="100">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 justify-content-center">
+            {{#each noticiaGe}}
+            <div class="col-12 col-md-6 col-xl-3"
+                 data-aos="fade-up"
+                 data-aos-delay="{{@index}}80">
+
+                <article class="news-card-alt h-100">
+                    <div class="d-flex flex-column h-100">
+
+                        <!-- IMAGEM -->
+                        <div 
+                            class="position-relative overflow-hidden"
+                            style="height: 200px;"
+                        >
+                            <img 
+                                src="{{this.image}}" 
+                                alt="{{this.titulo}}" 
+                                class="news-img-cover w-100 h-100"
+                            >
+                            <div class="category-tag">Ge.globo</div>
+                        </div>
+
+                        <!-- CONTEÚDO -->
+                        <div class="d-flex flex-column justify-content-between p-3 flex-grow-1">
+                            <div>
+                                <h2 class="news-title-serif fs-5 mb-2">
+                                    <a 
+                                        href="/noticia/{{this.id}}" 
+                                        class="text-decoration-none text-dark"
+                                    >
+                                        {{this.titulo}}
+                                    </a>
+                                </h2>
+
+                                <p class="news-excerpt text-muted small mb-3">
+                                    {{this.conteudo}}
+                                </p>
+                            </div>
+
+                            <!-- AÇÕES -->
+                            <div class="mt-auto">
+
+                                {{#if ../session.isAdmin}}
+                                <div class="d-flex gap-2 align-items-stretch">
+
+                                    <a 
+                                        href="/noticiaGe/edit/{{this.id}}"
+                                        class="btn btn-warning btn-sm flex-fill">
+                                        Editar
+                                    </a>
+
+                                    <form 
+                                        action="/deleteGe" 
+                                        method="POST"
+                                        class="flex-fill m-0">
+                                        <input 
+                                            type="hidden" 
+                                            name="id" 
+                                            value="{{this.id}}">
+                                        <button 
+                                            type="submit"
+                                            class="btn btn-danger btn-sm w-100 h-100">
+                                            Deletar
+                                        </button>
+                                    </form>
+
+                                </div>
+                                {{/if}}
+
+                                {{#unless ../session.isAdmin}}
+                                <a 
+                                    href="{{this.link}}" 
+                                    target="_blank"
+                                    class="read-more-link small text-decoration-none">
+                                    Ler reportagem completa 
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                                {{/unless}}
+
+                            </div>
+
+                        </div>
+                    </div>
                 </article>
             </div>
             {{/each}}

@@ -22,12 +22,14 @@ app.set("views", path.join(process.cwd(), "views"));
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 
+
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // --- CORREÇÃO 3: Caminho Public ---
 app.use(express.static(path.join(process.cwd(), "public")));
+app.set("trust proxy", 1);
 
 // Sessão
 app.use(
@@ -45,8 +47,10 @@ app.use(flash());
 
 // Polyfill para cookie-session (Garante que req.session.save exista)
 app.use((req, res, next) => {
+  res.locals.session = req.session;
   if (req.session && !req.session.save) {
     req.session.save = (cb) => cb && cb();
+    console.log(`USUÁRIO LOGADO: ${req.session.userEmail} | ADM: ${req.session.isAdmin}`);
   }
   next();
 });

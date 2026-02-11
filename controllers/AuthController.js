@@ -2,117 +2,104 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
 module.exports = class AuthController {
-  static login(req, res) {
-    res.render("auth/login");
-  }
-
-  static registrar(req, res) {
-    res.render("auth/registrar");
-  }
-
-  static async registrarPOST(req, res) {
-    const { name, email, senha, confirmSenha } = req.body;
-
-    // password match
-
-    if (senha != confirmSenha) {
-      req.flash("error", "As senhas não conferem , tente novamente");
-      res.render("auth/registrar");
-      return;
+    static login(req, res) {
+        res.render("auth/login");
     }
 
-    // check if user exist
-
-    const checkIfExist = await User.findOne({ where: { email: email } });
-
-    if (checkIfExist) {
-      req.flash("success", "O email ja esta sendo utilizado");
-      res.render("auth/registrar");
-      return;
+    static registrar(req, res) {
+        res.render("auth/registrar");
     }
 
-    const salt = bcrypt.genSaltSync(10);
-    const hashdPassword = bcrypt.hashSync(senha, salt);
+    static async registrarPOST(req, res) {
+        const { name, email, senha, confirmSenha } = req.body;
+        const meuEmailAdm = "gabrielaBandeiras@gatinha.com"; //
 
-    const user = {
-      name,
-      email,
-      senha: hashdPassword,
-    };
+        if (senha != confirmSenha) {
+            req.flash("error", "As senhas não conferem, tente novamente");
+            res.render("auth/registrar");
+            return;
+        }
 
-    try {
-      const createdUser = await User.create(user);
+        const checkIfExist = await User.findOne({ where: { email: email } });
+        if (checkIfExist) {
+            req.flash("error", "O email já está sendo utilizado");
+            res.render("auth/registrar");
+            return;
+        }
 
-      //   inicializar sesão
-      req.session.userId = createdUser.id;
+        const salt = bcrypt.genSaltSync(10);
+        const hashdPassword = bcrypt.hashSync(senha, salt);
 
-      req.flash("success", "Conta criada com sucesso , seja bem-vindo");
+        const userData = {
+            name,
+            email,
+            senha: hashdPassword,
+        };
 
-      req.session.save(() => {
+        try {
+            const createdUser = await User.create(userData);
+
+            // Inicializar sessão apenas APÓS criar o usuário
+            req.session.userId = createdUser.id;
+            req.session.userEmail = createdUser.email;
+            req.session.isAdmin = (createdUser.email === meuEmailAdm); //
+
+            req.flash("success", "Conta criada com sucesso, seja bem-vinda");
+            res.redirect("/");
+        } catch (err) {
+            console.log(err);
+            res.render("auth/registrar");
+        }
+    }
+
+    static logout(req, res) {
+        req.session = null;
         res.redirect("/");
-      });
-    } catch (err) {
-      console.log(err);
-      req.flash(
-        "error",
-        "Não foi possivel criar sua conta no momento , tente novamente mais tarde"
-      );
-
-      res.render("auth/registrar");
-      return;
     }
-  }
 
-static logout(req, res) {
-  req.session = null
-  res.redirect("/")
-}
-
-
-  static async loginPost(req, res) {
+static async loginPost(req, res) {
     const { email, senha } = req.body;
-
-    // find user
+    
+    // 1. Defina seu email ADM exatamente como apareceu no DEBUG
+    const meuEmailAdm = "gabrielaBandeiras@gatinha.com"; 
 
     const user = await User.findOne({ where: { email: email } });
 
     if (!user) {
-      req.flash("error", "Email não encontrado , tente novamente");
-      res.redirect("/login");
-
-      return;
+        req.flash("error", "Email não encontrado");
+        return res.redirect("/login");
     }
-
-    // check password
 
     const passwordMatch = bcrypt.compareSync(senha, user.senha);
-
     if (!passwordMatch) {
-      req.flash("error", "Senha invalida");
-      res.redirect("/login");
-      return;
+        req.flash("error", "Senha inválida");
+        return res.redirect("/login");
     }
-
-    // inicializando session
 
     try {
-      //   inicializar sesão
-      req.session.userId = user.id;
+        req.session.userId = user.id;
+        req.session.userEmail = user.email;
+        
+        // 2. 🔧 COMPARAÇÃO À PROVA DE ERROS:
+        // Convertemos ambos para minúsculo e removemos espaços extras
+        const emailLogado = user.email.trim().toLowerCase();
+        const emailDefinido = meuEmailAdm.trim().toLowerCase();
 
-      req.flash("success", "seja bem-vindo");
+        if (emailLogado === emailDefinido) {
+            req.session.isAdmin = true;
+        } else {
+            req.session.isAdmin = false;
+        }
 
-      req.session.save(() => {
+        console.log(`--- TENTATIVA DE LOGIN ---`);
+        console.log(`Email no Banco: "${user.email}"`);
+        console.log(`Admin definido: "${meuEmailAdm}"`);
+        console.log(`Resultado isAdmin: ${req.session.isAdmin}`);
+
         res.redirect("/");
-      });
     } catch (err) {
-      console.log(err);
-      req.flash(
-        "error",
-        "Não foi possivel criar sua conta no momento , tente novamente mais tarde"
-      );
-
-      res.render("auth/registrar");
-      return;
+        console.log(err);
+        res.redirect("/login");
     }
-  }
+}
 };

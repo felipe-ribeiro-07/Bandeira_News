@@ -1,0 +1,29 @@
+<div class="auth-container">
+    <form action="/updateGe" method="POST">
+        <fieldset>
+            <legend>Editar Noticia Ge</legend>
+            
+            <input type="text" name="id" id="" value="{{noticia.id}}" hidden>
+
+            <label for="titulo">Insira o título:</label>
+            <input type="text" name="titulo" id="titulo" placeholder="Minha nova notícia" value="{{noticia.titulo}}" required>
+            
+            <label for="conteudo">Digite sua notícia:</label>
+            <textarea name="conteudo" id="conteudo" placeholder="Escreva o resumo aqui...">
+                {{noticia.conteudo}}
+            </textarea>
+            
+            <label for="image">URL da imagem:</label>
+            <input type="text" name="image" id="image" placeholder="http://..." value="{{noticia.image}}">
+
+            <label for="link">Insira o link da noticia:</label>
+            <input type="text" name="link" id=""  value="{{noticia.link}}" placeholder="http://.....">
+
+    
+            <label for="autor">Autora:</label>
+            <input type="text" name="autor" id="autor" value="Gabriéla Bandeiras" >
+            
+            <input type="submit" value="Enviar Notícia">
+        </fieldset>
+    </form>
+</div>

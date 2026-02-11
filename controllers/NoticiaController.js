@@ -1,11 +1,15 @@
 const Noticia = require("../models/Noticia");
+const NoticiaGe = require("../models/NoticiaGe")
 
 module.exports = class NoticiaController {
-  static async showAll(req, res) {
-    const noticia = await Noticia.findAll({raw:true})
-    
-    res.render("noticias/all" , {noticia});
-  }
+static async showAll(req, res) {
+    // Buscando ambas simultaneamente para melhor performance
+    const [noticia, noticiaGe] = await Promise.all([
+        Noticia.findAll({ raw: true }),
+        NoticiaGe.findAll({ raw: true })
+    ]);
+    res.render("noticias/all", { noticia, noticiaGe });
+}
 
   static createNews(req, res) {
     res.render("noticias/create");

@@ -1,5 +1,5 @@
 /* =========================================================
-   MODERN EDITORIAL STYLESHEET (CORRIGIDO)
+   MODERN EDITORIAL STYLESHEET (ORGANIZADO)
    Cores: Verde (Ação), Roxo (Editorial), Marrom (Institucional)
    Tipografia: Playfair Display & Inter
    ========================================================= */
@@ -7,7 +7,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
 
 /* =====================
-   VARIÁVEIS
+   1. VARIÁVEIS
 ===================== */
 :root {
     --primary-green: #043a13;
@@ -29,31 +29,30 @@
 }
 
 /* =====================
-   RESET & BASE
+   2. RESET & BASE
 ===================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-hr{
+
+hr {
     border: #1A1A1A 2px solid;
 }
+
 body {
     font-family: var(--font-sans);
     color: var(--text-main);
-    background-color: var(--bg-white); /* 🔧 remove branco lateral */
+    background-color: var(--bg-white);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-
     padding-top: var(--nav-height);
-
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* 🔧 remove espaço duplicado no topo */
 main.main-content {
     flex: 1;
     padding: 0;
@@ -81,7 +80,7 @@ a:hover {
 }
 
 /* =====================
-   NAVBAR
+   3. NAVBAR & OFFCANVAS
 ===================== */
 .custom-navbar {
     background-color: var(--primary-green) !important;
@@ -111,8 +110,17 @@ a:hover {
     color: #ffffff !important;
 }
 
+.custom-offcanvas {
+    background-color: var(--primary-green) !important;
+    color: #ffffff !important;
+}
+
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 /* =====================
-   BOTÕES AUTH
+   4. BOTÕES & AUTH
 ===================== */
 .auth-btn {
     padding: 8px 20px;
@@ -130,8 +138,19 @@ a:hover {
     color: var(--primary-green);
 }
 
+.btn-outline-dark {
+    border-color: var(--institutional-brown);
+    color: var(--institutional-brown);
+    font-weight: 600;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--institutional-brown);
+    color: white;
+}
+
 /* =====================
-   GRID DE NOTÍCIAS
+   5. GRID DE NOTÍCIAS (PADRÃO)
 ===================== */
 .cardNews {
     padding-left: 1rem;
@@ -168,7 +187,138 @@ a:hover {
 }
 
 /* =====================
-   ARTIGO
+   6. CARDS EDITORIAIS (news-card-alt)
+===================== */
+.news-card-alt {
+    background: #fff;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+}
+
+.news-card-alt:hover {
+    background-color: #fcfcfc;
+}
+
+.news-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 250px;
+    transition: transform 0.6s ease;
+}
+
+.news-card-alt:hover .news-img-cover {
+    transform: scale(1.05);
+}
+
+.category-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--editorial-purple);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.news-title-serif {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    line-height: 1.2;
+    font-size: 1.5rem;
+}
+
+.news-title-serif a:hover {
+    color: var(--primary-green) !important;
+}
+
+.news-excerpt {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more-link {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border 0.3s;
+}
+
+.read-more-link:hover {
+    border-bottom: 2px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.tiny-date {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: #aaa;
+}
+
+/* =====================
+   7. BOTÕES DE GERENCIAMENTO (EDIT/DELETE)
+===================== */
+.news-card-alt .mt-auto .d-flex.gap-2 {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.btn-sm {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 0.2rem !important;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: 1px solid #e0a800;
+    color: #333;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: 1px solid #c82333;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+}
+
+form[action="/deleteGe"] {
+    display: block;
+    margin: 0;
+}
+
+/* =====================
+   8. ARTIGO / PÁGINA INDIVIDUAL
 ===================== */
 .article-header {
     max-width: 800px;
@@ -197,101 +347,110 @@ a:hover {
 }
 
 /* =====================
-   FOOTER
+   9. FORMULÁRIO DE NOTÍCIAS
 ===================== */
-footer {
-    background-color: var(--institutional-brown);
-    color: #D2C5C5;
-    padding: 3rem 0;
+.auth-container {
+    padding: 4rem 1rem;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-light);
 }
 
-footer p {
-    font-size: 0.9rem;
-    margin-bottom: 0;
-}
-
-/* =====================
-   OFFCANVAS
-===================== */
-.custom-offcanvas {
-    background-color: var(--primary-green) !important;
-    color: #ffffff !important;
-}
-
-.btn-close-white {
-    filter: invert(1) grayscale(100%) brightness(200%);
-}
-
-/* =====================
-   UTILIDADES
-===================== */
-.text-truncate-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* =====================
-   PORTFÓLIO / HERO
-===================== */
-.profile-image-wrapper {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-.profile-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 24px;
-    border: 8px solid var(--bg-offwhite);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.skills-card {
-    background-color: var(--bg-offwhite);
+form {
+    background-color: #ffffff;
+    padding: 2.5rem;
     border: 1px solid var(--border-light);
-    border-radius: 18px;
-    height: 100%;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 5%;
 }
 
-.skills-card h4 {
-    font-size: 1.2rem;
-    color: var(--institutional-brown);
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
-.skills-card li {
-    font-weight: 500;
-    color: var(--text-muted);
+legend {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--editorial-purple);
+    text-align: center;
+    margin-bottom: 2rem;
+    float: none;
+    width: 100%;
+    border-bottom: #043a13 1px solid;
 }
 
-.skills-card .highlight {
-    margin-right: 8px;
-}
-
-/* =====================
-   BOTÕES
-===================== */
-.btn-outline-dark {
-    border-color: var(--institutional-brown);
-    color: var(--institutional-brown);
+label {
+    font-family: var(--font-sans);
     font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--institutional-brown);
+    margin-bottom: 0.5rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.btn-outline-dark:hover {
-    background-color: var(--institutional-brown);
+input[type="text"],
+input[type="url"],
+textarea {
+    width: 100%;
+    padding: 0.85rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-light);
+    border-radius: 0;
+    font-family: var(--font-sans);
+    background-color: #fafafa;
+    transition: all 0.2s ease;
+}
+
+input:focus, 
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+}
+
+textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+input[type="submit"] {
+    background-color: var(--primary-green);
     color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--institutional-brown);
+}
+
+::placeholder {
+    color: #bbb;
+    font-size: 0.9rem;
 }
 
 /* =====================
-   SEÇÃO ROXA FULL-WIDTH
+   10. PORTFÓLIO & SEÇÃO ROXA
 ===================== */
 .bc {
     background-color: var(--editorial-purple);
     color: var(--bg-white);
-
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
@@ -310,12 +469,112 @@ footer p {
     padding-right: 1.5rem;
 }
 
+.profile-image-wrapper {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.profile-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.skills-card {
+    background-color: var(--bg-offwhite);
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
+    height: 100%;
+    padding: 1.5rem;
+}
+
+.skills-card h4 {
+    font-size: 1.2rem;
+    color: var(--institutional-brown);
+}
+
+.skills-card li {
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.skills-card .highlight {
+    margin-right: 8px;
+}
+
 /* =====================
-   RESPONSIVIDADE
+   11. FOOTER & UTILIDADES
+===================== */
+footer {
+    background-color: var(--institutional-brown);
+    color: #D2C5C5;
+    padding: 3rem 0;
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.text-truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* =====================
+   12. RESPONSIVIDADE
 ===================== */
 @media (max-width: 991px) {
     :root {
         --nav-height: 70px;
+    }
+}
+
+@media (max-width: 767px) {
+    .news-card-alt {
+        border: 1px solid var(--border-light);
+        margin-bottom: 1rem;
+    }
+    
+    .news-title-serif {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .news-section {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+    .news-section .container-fluid {
+        padding: 0 !important;
+    }
+
+    .row.g-3 {
+        --bs-gutter-x: 0rem;
+    }
+    
+    .news-card-alt {
+        margin-bottom: 15px;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+    
+    legend {
+        font-size: 1.8rem;
+    }
+
+    .btn-sm {
+        font-size: 0.8rem !important;
+        padding: 0.6rem !important;
     }
 }
 
@@ -333,4 +592,137 @@ footer p {
     .row.gx-lg-5 {
         --bs-gutter-x: 4rem;
     }
+
+    .news-card-alt .row.g-0 {
+        flex-direction: column;
+    }
+    
+    .news-card-alt .col-md-5, 
+    .news-card-alt .col-md-7 {
+        width: 100%;
+    }
 }
+
+@media (max-width: 1200px) and (min-width: 992px) {
+    .news-card-alt .mt-auto .d-flex.gap-2 {
+        flex-direction: column;
+    }
+}
+
+
+#particles-js {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bc > .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* =====================
+   BOTÕES EDITAR / DELETAR – PADRÃO UNIFICADO
+===================== */
+
+/* Container dos botões */
+.news-card-alt .mt-auto .d-flex.gap-2 {
+    align-items: stretch;
+}
+
+/* Base comum dos botões */
+.news-card-alt .mt-auto .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 36px;
+
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    padding: 0;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+/* EDITAR */
+.news-card-alt .btn-warning {
+    background-color: #ffc107;
+    border: 1px solid #e0a800;
+    color: #333;
+}
+
+.news-card-alt .btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+    transform: translateY(-1px);
+}
+
+/* DELETAR */
+.news-card-alt .btn-danger {
+    background-color: #dc3545;
+    border: 1px solid #c82333;
+    color: #fff;
+}
+
+.news-card-alt .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-1px);
+}
+
+/* Remove diferenças entre <a> e <button> */
+.news-card-alt form {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+.news-card-alt form button {
+    width: 100%;
+    height: 100%;
+}
+
+/* =====================
+   CORREÇÃO DEFINITIVA – FORM DO BOTÃO DELETAR
+===================== */
+
+/* Remove aparência de "card" do form */
+.news-card-alt form {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+
+    display: flex;
+    width: 100%;
+}
+
+/* Garante que o botão ocupe o mesmo espaço do Editar */
+.news-card-alt form button {
+    width: 100%;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+

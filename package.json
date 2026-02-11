@@ -25,6 +25,7 @@
     "express": "^5.2.1",
     "express-flash": "^0.0.2",
     "express-handlebars": "^8.0.4",
+    "particlesjs": "^2.2.3",
     "pg": "^8.17.2",
     "sequelize": "^6.37.7"
   },
